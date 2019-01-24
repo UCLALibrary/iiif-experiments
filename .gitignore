@@ -1,7 +1,10 @@
 # Some test files
 simple-converter/sample_tiffs/
 simple-converter/sample_tiffs.txt
-simple-converter/*.jp2
+simple-converter/jp2_files/
+
+# Ignore swap files
+**/.*.swp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
