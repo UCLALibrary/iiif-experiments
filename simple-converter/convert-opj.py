@@ -50,7 +50,8 @@ else:
           ojp.opj_compress(image, jp2files + "/" + Path(image).resolve().stem + ".jp2",
             openjpeg_options=openjpeg.LOSSLESS_COMPRESS_OPTIONS)
         except:
-          print 'Conversion failed at record: ', position
+          print 'Conversion failed at ' + path  + '; record: ', position
+          sys.exit()
 
 # To time this process, you can use:
 #  /usr/bin/time -f "%e" ./convert-ojp.py sample_tiffs.txt
