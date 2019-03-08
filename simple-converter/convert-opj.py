@@ -12,6 +12,7 @@
 #
 
 import sys, os
+import traceback
 from image_processing import openjpeg
 from pathlib import Path
 
@@ -49,8 +50,9 @@ else:
         try:
           ojp.opj_compress(image, jp2files + "/" + Path(image).resolve().stem + ".jp2",
             openjpeg_options=openjpeg.LOSSLESS_COMPRESS_OPTIONS)
-        except:
+        except Exception:
           print 'Conversion failed at ' + path  + '; record: ', position
+          traceback.print_exc()
           sys.exit()
 
 # To time this process, you can use:
