@@ -8,7 +8,7 @@ The first thing to do is to install the required dependencies and the Image Proc
 
     sudo apt install exiftool python-pip
     sudo pip install py pytest uuid pillow jpylyzer pathlib
-    sudo pip install git+https://github.com/bodleian/image-processing.git
+    sudo pip install git+https://github.com/UCLALibrary/image-processing.git
 
 The next thing to do is to install the Kakadu binaries and libraries. This can be accomplished by using the [kakadu-java](https://github.com/ksclarke/kakadu-java) build and your licensed version of Kakadu. Follow the instructions in that project's README for more information.
 
