@@ -12,6 +12,7 @@
 #
 
 import sys, os
+import traceback
 from image_processing import openjpeg
 from pathlib import Path
 
@@ -29,14 +30,30 @@ except OSError:
     print ("Creation of the directory %s failed" % jp2files)
 
 # Do the conversion from the input file's list of source files to JP2 outputs
-if (len(sys.argv) != 2):
+if (len(sys.argv) != 2 and len(sys.argv) != 3):
   print("You must supply a path to a file of TIFFs to be converted")
 else:
+  position = 0
+
+  if (len(sys.argv) != 3):
+    start = 0
+  else:
+    start = int(sys.argv[2])
+
   with open(sys.argv[1]) as file:
     for path in file:
-      image = path.rstrip()
-      ojp.opj_compress(image, jp2files + "/" + Path(image).resolve().stem + ".jp2",
-        openjpeg_options=openjpeg.LOSSLESS_COMPRESS_OPTIONS)
+      position += 1
+
+      if (position >= start):
+        image = path.rstrip()
+
+        try:
+          ojp.opj_compress(image, jp2files + "/" + Path(image).resolve().stem + ".jp2",
+            openjpeg_options=openjpeg.LOSSLESS_COMPRESS_OPTIONS)
+        except Exception:
+          print 'Conversion failed at ' + path  + '; record: ', position
+          traceback.print_exc()
+          sys.exit()
 
 # To time this process, you can use:
 #  /usr/bin/time -f "%e" ./convert-ojp.py sample_tiffs.txt

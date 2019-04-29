@@ -1,7 +1,9 @@
 # Some test files
 simple-converter/sample_tiffs/
 simple-converter/sample_tiffs.txt
+simple-converter/sample_tiff.txt
 simple-converter/jp2_files/
+simple-converter/opj_jp2_files/
 
 # Ignore swap files
 **/.*.swp
