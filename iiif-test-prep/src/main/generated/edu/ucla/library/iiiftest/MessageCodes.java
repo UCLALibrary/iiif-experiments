@@ -1,4 +1,4 @@
-package edu.ucla.library.s3image;
+package edu.ucla.library.iiiftest;
 /**
  * BEGIN GENERATED CODE
  */
