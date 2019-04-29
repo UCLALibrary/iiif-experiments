@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <!-- Define message codes class name -->
+  <entry key="message-class-name">edu.ucla.library.iiiftest.MessageCodes</entry>
+  <!-- To process file: -->
+  <!-- mvn info.freelibrary:freelib-utils:generate-codes -DmessageFiles=`ls src/main/resources/*_messages.xml` -->
+  <!-- General utility messages -->
+  <entry key="T-001">CSV file with file system paths is required</entry>
+  <entry key="T-002">Destination location for the files is required</entry>
+  <entry key="T-003">Ending upload process because max count of {} was reached</entry>
+  <entry key="T-004">Starting processing images in CSV file: {}</entry>
+  <entry key="T-005">Found a duplicate ID: {} [{} and {}]</entry>
+  <entry key="T-006">Unable to add file path to collection: {}</entry>
+  <entry key="T-007">Wasn't able to store path because ID already exists: {}</entry>
+  <entry key="T-008">Unexpected number of columns in CSV input: {}</entry>
+  <entry key="T-009">Dry run: Would have moved '{}' to '{}' if it wasn't</entry>
+  <entry key="T-010">Copying file from '{}' to '{}'</entry>
+</properties>
