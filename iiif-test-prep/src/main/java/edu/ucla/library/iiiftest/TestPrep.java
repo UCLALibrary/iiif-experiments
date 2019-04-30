@@ -65,6 +65,9 @@ public final class TestPrep {
     @Option(name = { "-d", "--dryrun" }, description = "Is just a dry run, don't actually move files")
     public boolean isDryRun;
 
+    @Option(name = { "-s", "--subdir" }, description = "The number of files to put into a subdirectory")
+    public int mySubdirCount;
+
     /**
      * The main method for the reconciler program.
      *
@@ -92,6 +95,8 @@ public final class TestPrep {
             final List<String> filePaths = new ArrayList();
             final Map<String, String> files = new HashMap();
             final Map<String, String> ids = new HashMap();
+
+            int subdir = 0;
 
             LOGGER.info(MessageCodes.T_004, myCSVFile);
 
@@ -134,7 +139,20 @@ public final class TestPrep {
             // Pull just the sample size we want
             for (int index = 0; index < myMaxCount; index++) {
                 final String path = filePaths.get(index);
-                final File file = new File(myDestination, files.get(path));
+                final File file;
+                final File dir;
+
+                if (index % mySubdirCount == 0) {
+                    subdir++;
+                }
+
+                dir = new File(myDestination, String.valueOf(subdir));
+
+                if (!dir.exists() && !dir.mkdirs()) {
+                    throw new I18nRuntimeException(MESSAGES, MessageCodes.T_011, dir.getAbsolutePath());
+                }
+
+                file = new File(dir, files.get(path));
 
                 if (isDryRun) {
                     LOGGER.info(MessageCodes.T_009, path, file);

@@ -9,6 +9,10 @@ final public class MessageCodes {
 	 */
 	public static final String T_009 = "T-009";
 	/**
+	 * Message: Cannot create a new subdirectory: {}
+	 */
+	public static final String T_011 = "T-011";
+	/**
 	 * Message: Unexpected number of columns in CSV input: {}
 	 */
 	public static final String T_008 = "T-008";

@@ -17,4 +17,5 @@
   <entry key="T-008">Unexpected number of columns in CSV input: {}</entry>
   <entry key="T-009">Dry run: Would have moved '{}' to '{}' if it wasn't</entry>
   <entry key="T-010">Copying file from '{}' to '{}'</entry>
+  <entry key="T-011">Cannot create a new subdirectory: {}</entry>
 </properties>
