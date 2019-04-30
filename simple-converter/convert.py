@@ -24,7 +24,8 @@ jp2files = os.environ.get('KAKADU_JP2_FILES', 'jp2_files')
 
 # Create a directory, if needed, for the JP2 output files
 try:
-    os.makedirs(jp2files)
+    if not os.path.exists(jp2files):
+        os.makedirs(jp2files)
 except OSError:
     print ("Creation of the directory %s failed" % jp2files)
 
@@ -35,7 +36,8 @@ else:
   with open(sys.argv[1]) as file:
     for path in file:
       image = path.rstrip()
-      kdu.kdu_compress(image, jp2files + "/" + Path(image).resolve().stem + ".jp2",
+      # We'll use the JPX extension though Kakadu tells us JPF is more correct
+      kdu.kdu_compress(image, jp2files + "/" + Path(image).resolve().stem + ".jpx",
         kakadu_options=kakadu.DEFAULT_LOSSLESS_COMPRESS_OPTIONS)
 
 # To time this process, you can use:
