@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <!-- Define message codes class name -->
+  <entry key="message-class-name">edu.ucla.library.iiif.MessageCodes</entry>
+  <!-- To process file: -->
+  <!-- mvn info.freelibrary:freelib-utils:generate-codes -DmessageFiles=`ls src/main/resources/*_messages.xml` -->
+  <!-- General utility messages -->
+  <entry key="G-001">CSV file with file system paths is required</entry>
+  <entry key="G-002">Processing the first {} images</entry>
+  <entry key="G-003">Ending upload process because max count of {} was reached</entry>
+  <entry key="G-004">Starting processing images in CSV file: {}</entry>
+  <entry key="G-005">Prepending path(s) to the ID(s)</entry>
+  <entry key="G-006">Added new image URL: {}</entry>
+  <entry key="G-007"></entry>
+  <entry key="G-008">Unexpected number of columns in CSV input: {}</entry>
+  <entry key="G-009"></entry>
+  <entry key="G-010"></entry>
+  <entry key="G-011"></entry>
+</properties>

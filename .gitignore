@@ -5,6 +5,9 @@ simple-converter/sample_tiff.txt
 simple-converter/jp2_files/
 simple-converter/opj_jp2_files/
 
+iiif-url-generator/*.csv
+iiif-url-generator/sample_tiffs.txt
+
 # Ignore swap files
 **/.*.swp
 
