@@ -1,0 +1,31 @@
+# Ignore project build tools which are generated on each build;
+# we keep Checkstyle and PMD so they can be picked up by Codacy
+src/main/tools/travis
+src/main/tools/eclipse
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# My standard input files
+input.csv
+input2.csv

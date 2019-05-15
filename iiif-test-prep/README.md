@@ -9,7 +9,7 @@ How to use:
 
 To see what arguments mean:
 
-    java -jar target/iiif-test-prep-0.0.1.jar-0.0.1.jar -h
+    java -jar target/iiif-test-prep-0.0.1.jar -h
 
 It generates a different sample each time so either choose a new output directory or clean up the directory
 before running a second time.
