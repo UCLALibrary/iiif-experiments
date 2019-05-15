@@ -15,7 +15,7 @@ import info.freelibrary.util.StringUtils;
 /**
  * A utility class for some common image processing needs.
  */
-public class ImageUtils {
+public final class ImageUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageUtils.class);
 
@@ -57,15 +57,14 @@ public class ImageUtils {
         }
 
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Generating tile paths [ID: {}; Tile Size: {}; Width: {}; Height: {}]", aID, aTileSize,
-                    aWidth, aHeight);
+            LOGGER.debug(MessageCodes.G_012, aID, aTileSize, aWidth, aHeight);
         }
 
         for (int multiplier = 1; multiplier * aTileSize < longDim; multiplier *= 2) {
             final int tileSize = multiplier * aTileSize;
 
             if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Creating tiles using multiplier of {}", multiplier);
+                LOGGER.debug(MessageCodes.G_011, multiplier);
             }
 
             int x = 0;
@@ -93,7 +92,7 @@ public class ImageUtils {
                     path = StringUtils.toString('/', aService, id, region, size, LABEL);
 
                     if (!list.add(path)) {
-                        LOGGER.warn("Tile path '{}' could not be added to queue", path);
+                        LOGGER.warn(MessageCodes.G_007, path);
                     }
                 }
 
@@ -113,7 +112,7 @@ public class ImageUtils {
                         path = StringUtils.toString('/', aService, id, region, size, LABEL);
 
                         if (!list.add(path)) {
-                            LOGGER.warn("Tile path '{}' could not be added to queue", path);
+                            LOGGER.warn(MessageCodes.G_007, path);
                         }
                     }
                 }
@@ -123,10 +122,10 @@ public class ImageUtils {
         }
 
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("{} tiles needed for {}", list.size(), aID);
+            LOGGER.debug(MessageCodes.G_010, list.size(), aID);
 
             for (final Object path : list.toArray()) {
-                LOGGER.debug("Tile path: {}", path);
+                LOGGER.debug(MessageCodes.G_009, path);
             }
         }
 
@@ -157,7 +156,7 @@ public class ImageUtils {
         final String[] widthHeight = aSize.split("\\,");
 
         if (widthHeight.length != 2) {
-            throw new IllegalArgumentException("Argument is not a comma delimited size: " + aSize);
+            throw new IllegalArgumentException(LOGGER.getMessage(MessageCodes.G_013, aSize));
         }
 
         return ratio(Integer.parseInt(widthHeight[0]), Integer.parseInt(widthHeight[1]));

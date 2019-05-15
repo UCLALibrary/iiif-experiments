@@ -51,9 +51,9 @@ public final class URLGenerator {
 
     private static final int DEFAULT_TILE_SIZE = 512;
 
-    private static final String DEFAULT_IIIF_SERVICE = "/iiif";
+    private static final String DEFAULT_IIIF_SERVICE = "/iiif/2";
 
-    private static final String DEFAULT_IIIF_SERVER = "https://library.ucla.edu";
+    private static final String SLASH = "/";
 
     @Inject
     public HelpOption myHelpOption;
@@ -138,8 +138,8 @@ public final class URLGenerator {
                     if (image.length == 1) {
                         filePath = image[0];
 
-                        if (filePath.contains("/")) {
-                            id = filePath.substring(filePath.lastIndexOf('/') + 1);
+                        if (filePath.contains(SLASH)) {
+                            id = filePath.substring(filePath.lastIndexOf(SLASH) + 1);
                         } else {
                             id = filePath;
                         }
@@ -151,7 +151,7 @@ public final class URLGenerator {
                     }
 
                     for (int writerIndex = 0; writerIndex < prefixes.length; writerIndex++) {
-                        final String encodedID = URLEncoder.encode(prefixes[writerIndex] + "/" + id, ENCODING);
+                        final String encodedID = URLEncoder.encode(prefixes[writerIndex] + SLASH + id, ENCODING);
                         final BufferedImage bimg = ImageIO.read(new File(filePath));
                         final Iterator<String> urlIterator = ImageUtils.getTilePaths(DEFAULT_IIIF_SERVICE, encodedID,
                                 DEFAULT_TILE_SIZE, bimg.getWidth(), bimg.getHeight()).listIterator();
