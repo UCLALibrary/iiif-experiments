@@ -44,8 +44,6 @@ public final class URLGenerator {
 
     private static final String EOL = System.getProperty("line.separator");
 
-    private static final String JP2_EXT = ".jpx";
-
     private static final String ENCODING = StandardCharsets.UTF_8.name();
 
     private static final int DEFAULT_TILE_SIZE = 512;
@@ -65,6 +63,9 @@ public final class URLGenerator {
 
     @Option(name = { "-m", "--max" }, description = "A maximum number of files to process")
     public int myMaxCount;
+
+    @Option(name = { "-e", "--extension" }, description = "A file extension for the source image")
+    public String myFileExt;
 
     // e.g.: 110-130MB,110-130MB_JP2s,110-130MB_lossy,50-60MB,50-60MB_JP2s,50-60MB_lossy
     @Option(name = { "-p", "--prefixes" }, description = "A comma-delimited list of prefixes to append to IDs")
@@ -143,7 +144,7 @@ public final class URLGenerator {
                             id = filePath;
                         }
 
-                        id = FileUtils.stripExt(id) + JP2_EXT;
+                        id = FileUtils.stripExt(id) + "." + myFileExt;
                     } else {
                         filePath = image[1];
                         id = image[0];
