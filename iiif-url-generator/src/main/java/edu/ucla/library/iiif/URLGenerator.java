@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Objects;
@@ -151,10 +150,10 @@ public final class URLGenerator {
                     }
 
                     for (int writerIndex = 0; writerIndex < prefixes.length; writerIndex++) {
-                        final String encodedID = URLEncoder.encode(prefixes[writerIndex] + SLASH + id, ENCODING);
                         final BufferedImage bimg = ImageIO.read(new File(filePath));
-                        final Iterator<String> urlIterator = ImageUtils.getTilePaths(DEFAULT_IIIF_SERVICE, encodedID,
-                                DEFAULT_TILE_SIZE, bimg.getWidth(), bimg.getHeight()).listIterator();
+                        final Iterator<String> urlIterator = ImageUtils.getTilePaths(DEFAULT_IIIF_SERVICE,
+                                prefixes[writerIndex] + SLASH + id, DEFAULT_TILE_SIZE, bimg.getWidth(), bimg
+                                        .getHeight()).listIterator();
 
                         while (urlIterator.hasNext()) {
                             final String url = urlIterator.next();
